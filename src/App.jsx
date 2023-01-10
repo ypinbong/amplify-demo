@@ -9,6 +9,7 @@ import { onCreateTodo, onUpdateTodo, onDeleteTodo } from './graphql/subscription
 function App({user, signOut}) {
   const [todos, setTodos] = useState([])
   const [todo, setTodo] = useState('')
+  const [errMsg, setErrMsg] = useState('')
 
   const fetchTodos = async() => {
     try {
@@ -20,10 +21,15 @@ function App({user, signOut}) {
   }
   
   const submitHandler = async() => {
+    if (!todo) {
+      setErrMsg("Please enter task!")
+      return
+    }
+    // const { username } = user
     try {
       const res = await API.graphql(graphqlOperation(createTodo, {
         input: {
-        content: todo,
+          content: todo
         }
       }))
       if (res.data.createTodo.content) {
@@ -79,6 +85,7 @@ function App({user, signOut}) {
         <div>Welome <b style={{textTransform: 'capitalize'}}>{user.username}</b><Button variation='link' onClick={signOut}>Sign out</Button></div>
         <Flex direction="column">
           <TextAreaField value={todo} onChange={(e)=>setTodo(e.target.value)} />
+          {errMsg&&<Text color="red" textAlign="center">{errMsg}</Text>}
           <Button style={{background: '#047d95', color: '#fff'}} onClick={submitHandler}>Add a todo</Button>
         </Flex>
         <Flex direction="column" textAlign="center" width={'300px'}>
@@ -86,9 +93,10 @@ function App({user, signOut}) {
             return (
               <Flex direction="column" textAlign="left" border="1px solid #767676" borderRadius={'2px'} padding={8} key={item.id}>
                 <Text fontWeight={'bold'}>{item.content}</Text>
-                <View>👨‍👩‍👦‍👦 {item.owners?.map(owner => <Badge margin={4}>{owner}</Badge>)}</View>
+                <View>
+                  👨‍👩‍👦‍👦 {item?.owners?.map(owner => <Badge margin={4}>{owner}</Badge>)}
+                </View>
                 <Button onClick={async () => {
-                  console.log('App.jsx ~ line 91: item', item);
                   API.graphql(graphqlOperation(updateTodo, {
                     input: {
                       id: item.id,

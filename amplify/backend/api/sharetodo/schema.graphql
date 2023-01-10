@@ -4,6 +4,7 @@ input AMPLIFY { globalAuthRule: AuthRule = { allow: public } } # FOR TESTING ONL
 
 type Todo
   @model # Creates a DynamoDB table
+  @auth(rules: [{ allow: owner, ownerField: "owners"}]) # Sets up owner-based authorization
 { 
   id: ID!
   content: String

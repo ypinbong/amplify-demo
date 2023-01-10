@@ -14,17 +14,19 @@
         "authConfig": {
           "additionalAuthenticationProviders": [
             {
-              "authenticationType": "AMAZON_COGNITO_USER_POOLS",
-              "userPoolConfig": {
-                "userPoolId": "authsharetodoe60cbe34"
-              }
+              "apiKeyConfig": {
+                "apiKeyExpirationDate": "2023-01-17T06:55:45.269Z",
+                "apiKeyExpirationDays": 7,
+                "description": "very nice"
+              },
+              "authenticationType": "API_KEY"
             }
           ],
           "defaultAuthentication": {
-            "apiKeyConfig": {
-              "apiKeyExpirationDays": 7
-            },
-            "authenticationType": "API_KEY"
+            "authenticationType": "AMAZON_COGNITO_USER_POOLS",
+            "userPoolConfig": {
+              "userPoolId": "authsharetodoe60cbe34"
+            }
           }
         }
       },

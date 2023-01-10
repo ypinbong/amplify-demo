@@ -4,14 +4,17 @@
     "apiName": "sharetodo",
     "serviceName": "AppSync",
     "defaultAuthType": {
-      "mode": "API_KEY",
-      "expirationTime": 7
+      "mode": "AMAZON_COGNITO_USER_POOLS",
+      "cognitoUserPoolId": "authsharetodoe60cbe34"
     },
     "additionalAuthTypes": [
       {
-        "mode": "AMAZON_COGNITO_USER_POOLS",
-        "cognitoUserPoolId": "authsharetodoe60cbe34"
+        "mode": "API_KEY",
+        "expirationTime": 7,
+        "apiKeyExpirationDate": "2023-01-17T06:55:45.269Z",
+        "keyDescription": "very nice"
       }
-    ]
+    ],
+    "conflictResolution": {}
   }
 }
