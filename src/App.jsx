@@ -7,6 +7,7 @@ import { createTodo } from './graphql/mutations'
 
 function App({user, signOut}) {
   const [todos, setTodos] = useState([])
+  const [todo, setTodo] = useState('')
   useEffect(() => {
     const fetchTodos = async() => {
       try {
@@ -19,19 +20,29 @@ function App({user, signOut}) {
     }
     fetchTodos()
   }, [])
+  const submitHandler = () => {
+    API.graphql(graphqlOperation(createTodo, {
+      input: {
+      content: todo,
+      }
+    }))
+  }
   
   return (
     <>
-      <Flex direction="column" padding={8}>
-        <Text>Logged in as <b>{user.username}</b><Button variation='link' onClick={signOut}>Sign out</Button></Text>
+      <Flex direction="column" justifyContent="center" alignItems="center" padding={8}>
+        <Text>Welome <b>{user.username}</b><Button variation='link' onClick={signOut}>Sign out</Button></Text>
+        <Flex>
+          <input onChange={(e)=>setTodo(e.target.value)} />
+          <Button onClick={submitHandler}>Add a todo</Button>
+        </Flex>
+        <Flex direction="column">
+          todos.map(item => (
+              return item
+            )
+          )
+        </Flex>
       </Flex>
-      <Button onClick={() => {
-        API.graphql(graphqlOperation(createTodo, {
-            input: {
-            content: window.prompt('content?'),
-            }
-        }))
-      }}>Add todo</Button>
     </>
   );
 }

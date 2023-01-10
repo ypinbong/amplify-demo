@@ -19,5 +19,26 @@
         "sharetodo": {}
       }
     }
+  },
+  "newtodo": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-sharetodo-newtodo-103119-authRole",
+      "UnauthRoleArn": "arn:aws:iam::626560118522:role/amplify-sharetodo-newtodo-103119-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::626560118522:role/amplify-sharetodo-newtodo-103119-authRole",
+      "Region": "us-west-2",
+      "DeploymentBucketName": "amplify-sharetodo-newtodo-103119-deployment",
+      "UnauthRoleName": "amplify-sharetodo-newtodo-103119-unauthRole",
+      "StackName": "amplify-sharetodo-newtodo-103119",
+      "StackId": "arn:aws:cloudformation:us-west-2:626560118522:stack/amplify-sharetodo-newtodo-103119/e08fa720-908e-11ed-8770-0a0067734291",
+      "AmplifyAppId": "d6niuul2ehbtv"
+    },
+    "categories": {
+      "auth": {
+        "sharetodoe60cbe34": {}
+      },
+      "api": {
+        "sharetodo": {}
+      }
+    }
   }
 }
